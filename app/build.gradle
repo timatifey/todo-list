@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "dev.timatifey.todo_list"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Core
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:${var.coreVersion}"
+    implementation "androidx.appcompat:appcompat:${var.appCompatVersion}"
+
+    // UI Components
+    implementation "com.google.android.material:material:${var.materialVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:${var.constraintLayoutVersion}"
+    implementation "androidx.recyclerview:recyclerview:${var.recyclerViewVersion}"
+    implementation "androidx.viewpager2:viewpager2:${var.viewPagerVersion}"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${var.coroutinesAndroidVersion}"
+
+    // Navigation
+    implementation "com.ncapdevi:frag-nav:${var.fragNavVersion}"
+    implementation "androidx.fragment:fragment-ktx:$var.fragmentVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$var.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$var.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$var.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$var.lifecycleVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:${var.roomVersion}"
+    implementation "androidx.legacy:legacy-support-v4:${var.androidLegacyVersion}"
+    kapt "androidx.room:room-compiler:${var.roomVersion}"
+    implementation "androidx.room:room-ktx:${var.roomVersion}"
+    androidTestImplementation "androidx.room:room-testing:${var.roomVersion}"
+
+    // Gson
+    implementation "com.google.code.gson:gson:${var.gsonVersion}"
+
+    // Retrofit
+//    implementation "com.squareup.retrofit2:retrofit:${var.retrofitVersion}"
+//    implementation "com.squareup.retrofit2:converter-gson:${var.retrofitVersion}"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:${var.okHttpVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${var.okHttpVersion}"
+
+    // Dagger - Hilt
+    implementation 'com.google.dagger:hilt-android:2.33-beta'
+    kapt 'com.google.dagger:hilt-compiler:2.33-beta'
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:${var.glideVersion}"
+
+    // Test
+    testImplementation "junit:junit:${var.junitVersion}"
+    androidTestImplementation "androidx.test.ext:junit:${var.androidxJunitVersion}"
+    androidTestImplementation "androidx.test.espresso:espresso-core:${var.espressoVersion}"
+}
